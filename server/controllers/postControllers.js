@@ -30,7 +30,6 @@ const createPost=async (req,res,next)=>{
                 if(!newPost){
                     return res.status(422).json({error: "post couldn't created"})
                 }
-
                 const currentUser= await User.findById(req.user.id);
                 const userPostCount=currentUser.posts+1;
                 await User.findByIdAndUpdate(req.user.id, {posts: userPostCount})
